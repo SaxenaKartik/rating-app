@@ -18,3 +18,9 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits = 5, decimal_places = 2)
     def __str__(self):
         return "name : " + str(self.name) + " price : " + str(self.price) + " rating : " + str(self.rating)
+
+class Rate(models.Model):
+    """Rate model"""
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    rating = models.DecimalField(max_digits = 5, decimal_places = 2)

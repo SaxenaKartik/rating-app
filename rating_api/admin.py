@@ -4,3 +4,4 @@ from rating_api import models
 
 admin.site.register(models.MyUser)
 admin.site.register(models.Product)
+admin.site.register(models.Rate)
