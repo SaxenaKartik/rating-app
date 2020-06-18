@@ -17,4 +17,4 @@ class Product(models.Model):
     price = models.DecimalField(max_digits = 7, decimal_places = 2)
     rating = models.DecimalField(max_digits = 5, decimal_places = 2)
     def __str__(self):
-        return "name : " + str(self.name) + "price : " + (self.price) + "rating : " + (self.rating)
+        return "name : " + str(self.name) + " price : " + str(self.price) + " rating : " + str(self.rating)

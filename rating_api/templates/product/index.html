@@ -5,7 +5,8 @@
 <!-- {{model}} -->
 <ul class = 'collection' style = 'background-color: #fff'>
 	{% for m in model %}
-  <li class="collection-item">{{m}}</li>
+  <li class="collection-item"><b>Name : </b> {{m.name}}  <b> Price : </b>  {{m.price}}  <b> Rating : </b> {{m.rating}}
+</li>
   	{% endfor %}
 </ul>
 

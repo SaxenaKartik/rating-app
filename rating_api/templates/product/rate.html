@@ -1,12 +1,18 @@
 {% load rest_framework %}
 
 <html><body>
-<p>Product List</p>
+<p>Rating List</p>
+<form method="POST">
+
 <ul class = 'collection' style = 'background-color: #fff'>
 	{% for m in model %}
-  <li>class="collection-item">{{m.name}}</li>
-  	{% endfor %}
+  <li class="collection-item"><b>Name : </b> {{m.name}}  <b> Price : </b>  {{m.price}}  <b> Rating : </b> {{m.rating}}
+    <b> Your Rating : </b>  <input type="input" value="">
+
+</li>{% endfor %}
 </ul>
 
+<input type="submit" value="Submit">
+</form>
 
 </body></html>

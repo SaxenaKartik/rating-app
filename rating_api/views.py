@@ -48,6 +48,8 @@ class signup(APIView):
         pass
 
 class product(APIView):
+    serializer_class = serializers.UserSerializer
+    renderer_classes = [TemplateHTMLRenderer]
     def get(self, request):
         model = Product.objects.all()
         serializer = serializers.ProductSerializer
@@ -55,8 +57,10 @@ class product(APIView):
 
 
 class rate(APIView):
+    serializer_class = serializers.UserSerializer
+    renderer_classes = [TemplateHTMLRenderer]
     def get(self, request):
-        model = MyUser.objects.all()
+        model = Product.objects.all()
         serializer = serializers.ProductSerializer
         return Response({'serializer': serializer, 'model': model}, template_name = "product/rate.html")
 
