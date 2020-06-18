@@ -71,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rating_project.wsgi.application'
+LOGIN_REDIRECT_URL =  '/api/login/'
+LOGOUT_REDIRECT_URL =  '/api/login/'
 
 
 # Database

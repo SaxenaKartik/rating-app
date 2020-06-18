@@ -1,14 +1,20 @@
 {% load rest_framework %}
 
 <html><body>
+{% if request.user.username%}
+<p>Current User : {{request.user.username}}</p>
 <p>Product List</p>
 <!-- {{model}} -->
 <ul class = 'collection' style = 'background-color: #fff'>
-	{% for m in model %}
+  {% for m in model %}
   <li class="collection-item"><b>Name : </b> {{m.name}}  <b> Price : </b>  {{m.price}}  <b> Rating : </b> {{m.rating}}
-</li>
-  	{% endfor %}
+  </li>
+  {% endfor %}
 </ul>
+{%else%}
+<p> User must be logged in!</p>
+<a href = "/api/login/">Login Page</a>
+{%endif%}
 
 
 </body></html>

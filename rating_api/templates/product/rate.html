@@ -1,6 +1,8 @@
 {% load rest_framework %}
 
 <html><body>
+{% if request.user.username%}
+<p>Current User : {{request.user.username}}</p>
 <p>Rating List</p>
 <form method="POST">
 
@@ -14,5 +16,9 @@
 
 <input type="submit" value="Submit">
 </form>
+{%else%}
+<p> User must be logged in!</p>
+<a href = "/api/login/">Login Page</a>
+{%endif%}
 
 </body></html>

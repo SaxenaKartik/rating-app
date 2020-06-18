@@ -1,11 +1,16 @@
 {% load rest_framework %}
 
 <html><body>
-
-    <form method="POST">
-        {% csrf_token %}
-        {% render_form serializer %}
-        <input type="submit" value="Login">
+    {% if request.user.username%}
+    <p>Current User : {{request.user.username}}</p>
+    <a href = "/api/logout">Logout</a>
+    {%else%}
+    <form method="post">
+    {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+      {{form}}
+      <button type="submit">Log in</button>
     </form>
+    {%endif%}
 
 </body></html>

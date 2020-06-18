@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from .models import MyUser, Product
 from rest_framework.serializers import ModelSerializer
 from rest_framework.response import Response
+# from rest_auth.registration.views import RegisterView
 # Create your views here.
 # class UserViewSet(viewsets.ModelViewSet):
 #     """ Handle creating and updating users"""
@@ -21,6 +22,7 @@ from rest_framework.response import Response
 #
 #     serializer_class = serializers.ProductSerializer
 #     queryset = models.Product.objects.all()
+# @transaction.atomic
 class login(APIView):
     serializer_class = serializers.UserSerializer
     renderer_classes = [TemplateHTMLRenderer]
@@ -32,13 +34,14 @@ class login(APIView):
         serializer = serializers.UserSerializer
         return Response({'serializer': serializer, 'model': model}, template_name = "registration/login.html")
 
-    def post(self, request):
-        pass
+    # def post(self, request):
+    #     pass
 
+# @transaction.atomic
 class signup(APIView):
     serializer_class = serializers.UserSerializer
     renderer_classes = [TemplateHTMLRenderer]
-
+    #
     def get(self, request):
         model = MyUser.objects.all()
         serializer = serializers.UserSerializer
@@ -46,6 +49,7 @@ class signup(APIView):
 
     def post(self, request):
         pass
+
 
 class product(APIView):
     serializer_class = serializers.UserSerializer

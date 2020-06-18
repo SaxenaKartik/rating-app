@@ -8,7 +8,8 @@ from django.contrib.auth import views
 # router.register('product', views.ProductViewSet)
 
 urlpatterns = [
-    path('login/',app_views.login.as_view()),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/',views.LogoutView.as_view(), name='logout'),
     path('signup/', app_views.signup.as_view()),
     path('product/', app_views.product.as_view()),
     path('rate/', app_views.rate.as_view())
