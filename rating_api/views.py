@@ -2,11 +2,12 @@ from django.shortcuts import render
 # from rest_framework import viewsets
 from rating_api import models
 from rating_api import serializers
-from django.views import View
+from rest_framework.renderers import TemplateHTMLRenderer
 from django.http import HttpResponse
+from rest_framework.views import APIView
 from .models import MyUser, Product
-from rest_framework.renderers import JSONRenderer
-
+from rest_framework.serializers import ModelSerializer
+from rest_framework.response import Response
 # Create your views here.
 # class UserViewSet(viewsets.ModelViewSet):
 #     """ Handle creating and updating users"""
@@ -20,31 +21,44 @@ from rest_framework.renderers import JSONRenderer
 #
 #     serializer_class = serializers.ProductSerializer
 #     queryset = models.Product.objects.all()
-class login(View):
+class login(APIView):
     serializer_class = serializers.UserSerializer
-    renderer_classes = ['TemplateHTMLRenderer']
-    template_name = 'login.html'
+    renderer_classes = [TemplateHTMLRenderer]
+    # queryset = User.objects.all()
 
     def get(self, request):
-        model = MyUser.objects.get.all()
-        serializer = ModelSerializer(model)
-        return Response({'serializer': serializer, 'model': model})
+
+        model = MyUser.objects.all()
+        serializer = serializers.UserSerializer
+        return Response({'serializer': serializer, 'model': model}, template_name = "registration/login.html")
 
     def post(self, request):
         pass
 
-class signup(View):
+class signup(APIView):
+    serializer_class = serializers.UserSerializer
+    renderer_classes = [TemplateHTMLRenderer]
+
     def get(self, request):
-        pass
+        model = MyUser.objects.all()
+        serializer = serializers.UserSerializer
+        return Response({'serializer': serializer, 'model': model}, template_name = "registration/signup.html")
+
     def post(self, request):
         pass
 
-class product(View):
+class product(APIView):
     def get(self, request):
-        pass
+        model = Product.objects.all()
+        serializer = serializers.ProductSerializer
+        return Response({'serializer': serializer, 'model': model}, template_name = "product/index.html")
 
-class rate(View):
+
+class rate(APIView):
     def get(self, request):
-        pass
+        model = MyUser.objects.all()
+        serializer = serializers.ProductSerializer
+        return Response({'serializer': serializer, 'model': model}, template_name = "product/rate.html")
+
     def post(self, request):
         pass

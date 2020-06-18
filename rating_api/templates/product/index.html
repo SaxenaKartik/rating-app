@@ -1,0 +1,13 @@
+{% load rest_framework %}
+
+<html><body>
+<p>Product List</p>
+<!-- {{model}} -->
+<ul class = 'collection' style = 'background-color: #fff'>
+	{% for m in model %}
+  <li class="collection-item">{{m}}</li>
+  	{% endfor %}
+</ul>
+
+
+</body></html>
